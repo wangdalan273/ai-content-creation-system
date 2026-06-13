@@ -1,0 +1,1094 @@
+/**
+ * 🍎 Apple Style Formatter - 样式表
+ * 极简、优雅、专业的苹果风格排版
+ */
+
+/* ========================================
+   全局变量 - 苹果配色系统
+   ======================================== */
+:root {
+  /* 核心配色 (Light Mode) */
+  --apple-primary: #1d1d1f;
+  --apple-secondary: #6e6e73;
+  --apple-tertiary: #86868b;
+  --apple-background: #ffffff;
+  --apple-surface: #f5f5f7;
+
+  /* 强调色 */
+  --apple-accent: #0071e3;
+  --apple-accent-hover: #0077ed;
+
+  /* 语义色 */
+  --apple-success: #34c759;
+  --apple-warning: #ff9500;
+  --apple-error: #ff3b30;
+
+  /* 代码配色 */
+  --apple-code-text: #c7254e;
+  --apple-code-bg: #f5f5f7;
+  --apple-code-block-bg: #fafafa;
+  --apple-code-block-border: #e8e8ed;
+
+  /* 边框和分隔线 */
+  --apple-divider: #d2d2d7;
+  --apple-border: #e8e8ed;
+
+  /* 间距 */
+  --apple-spacing-xs: 4px;
+  --apple-spacing-sm: 8px;
+  --apple-spacing-md: 16px;
+  --apple-spacing-lg: 24px;
+  --apple-spacing-xl: 32px;
+  --apple-spacing-xxl: 48px;
+
+  /* 圆角 */
+  --apple-radius-sm: 4px;
+  --apple-radius-md: 8px;
+  --apple-radius-lg: 12px;
+
+  /* 字体 */
+  --apple-font-text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', Arial, sans-serif;
+  --apple-font-code: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+}
+
+/* ========================================
+   深色模式适配 (Dark Mode)
+   ======================================== */
+.theme-dark {
+  --apple-primary: #dcddde;
+  --apple-secondary: #b3b3b3;
+  --apple-tertiary: #5c5c5c;
+  --apple-background: var(--background-primary);
+  --apple-surface: var(--background-secondary);
+  --apple-border: var(--background-modifier-border);
+  --apple-divider: var(--background-modifier-border);
+
+  --apple-code-text: #ff6b6b;
+  --apple-code-bg: #2d2d2d;
+  --apple-code-block-bg: #1e1e1e;
+  --apple-code-block-border: #333;
+}
+
+/* ========================================
+   视图容器
+   ======================================== */
+.apple-converter-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--apple-background);
+  font-family: var(--apple-font-text);
+  color: var(--apple-primary);
+}
+
+/* ========================================
+   设置面板 - 新 UI
+   ======================================== */
+.apple-settings-panel {
+  padding: var(--apple-spacing-md);
+  border-bottom: 1px solid var(--apple-border);
+  background: var(--apple-background);
+}
+
+.apple-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--apple-spacing-md);
+}
+
+.apple-settings-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--apple-primary);
+}
+
+.apple-current-doc {
+  font-size: 12px;
+  color: var(--apple-tertiary);
+}
+
+.apple-settings-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--apple-spacing-md);
+}
+
+.apple-setting-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--apple-spacing-xs);
+}
+
+.apple-setting-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--apple-primary);
+}
+
+.apple-setting-content {
+  display: flex;
+  align-items: center;
+}
+
+/* === 主题按钮网格 === */
+.apple-btn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.apple-btn-theme {
+  padding: 6px 8px;
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius-sm);
+  background: var(--apple-background);
+  color: var(--apple-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.apple-btn-theme:hover {
+  color: var(--apple-primary);
+  border-color: var(--apple-accent);
+}
+
+.apple-btn-theme.active {
+  background: rgba(0, 113, 227, 0.1);
+  color: var(--apple-accent);
+  border-color: rgba(0, 113, 227, 0.3);
+  box-shadow: 0 1px 2px rgba(0, 113, 227, 0.1);
+}
+
+/* === 字号按钮行 === */
+.apple-btn-row {
+  display: flex;
+  gap: 4px;
+}
+
+.apple-btn-size {
+  padding: 6px 10px;
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius-sm);
+  background: var(--apple-background);
+  color: var(--apple-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.apple-btn-size:hover {
+  color: var(--apple-primary);
+  border-color: var(--apple-accent);
+}
+
+.apple-btn-size.active {
+  background: rgba(0, 113, 227, 0.1);
+  color: var(--apple-accent);
+  border-color: rgba(0, 113, 227, 0.3);
+}
+
+/* === 颜色选择器 === */
+.apple-color-grid {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.apple-btn-color {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.apple-btn-color::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--btn-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Color Button (Text) */
+.apple-btn-custom-text {
+  padding: 0 10px;
+  height: 28px;
+  border: 1px solid var(--apple-border);
+  border-radius: 14px;
+  /* Pill shape */
+  background: var(--apple-background);
+  color: var(--apple-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+}
+
+.apple-btn-custom-text:hover {
+  color: var(--apple-primary);
+  border-color: var(--apple-accent);
+}
+
+.apple-btn-custom-text.active {
+  background: rgba(0, 113, 227, 0.1);
+  color: var(--apple-accent);
+  border-color: rgba(0, 113, 227, 0.3);
+}
+
+
+
+.apple-btn-color:hover {
+  transform: scale(1.1);
+}
+
+.apple-btn-color.active {
+  border-color: var(--btn-color);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+/* === Settings Collapsible === */
+.apple-settings-details {
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius-md);
+  margin-bottom: var(--apple-spacing-md);
+  overflow: hidden;
+  background: var(--apple-background);
+  /* Cleaner background */
+}
+
+.apple-settings-summary {
+  padding: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: var(--apple-radius-md);
+  transition: all 0.2s ease;
+  user-select: none;
+  color: var(--apple-primary);
+}
+
+.apple-settings-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Chevron Arrow */
+.apple-settings-summary::after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid var(--apple-secondary);
+  border-bottom: 2px solid var(--apple-secondary);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  margin-right: 4px;
+}
+
+.apple-settings-details[open] .apple-settings-summary::after {
+  transform: rotate(-135deg);
+  /* Point up */
+}
+
+.apple-settings-summary:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.apple-settings-details[open] .apple-settings-summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid var(--apple-border);
+}
+
+.apple-settings-details .apple-settings-area {
+  padding: var(--apple-spacing-md);
+  background: var(--apple-background);
+}
+
+/* === 下拉选择器 === */
+/* === 下拉选择器 === */
+.apple-select {
+  width: auto;
+  min-width: 80px;
+  max-width: 120px;
+  padding: 6px 28px 6px 10px;
+  border: 1px solid var(--apple-border);
+  border-radius: var(--apple-radius-sm);
+  background: var(--apple-background);
+  color: var(--apple-primary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+  /* 显示下拉箭头 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236e6e73' d='M2.5 4.5L6 8l3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+}
+
+.theme-dark .apple-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b3b3b3' d='M2.5 4.5L6 8l3.5-3.5'/%3E%3C/svg%3E");
+  background-color: #2c2c2e;
+  /* 明确的深色背景 */
+  border-color: #424244;
+  color: #dcddde;
+}
+
+.apple-select:hover {
+  border-color: var(--apple-accent);
+}
+
+.theme-dark .apple-select:hover {
+  border-color: var(--apple-accent);
+}
+
+.apple-select:focus {
+  outline: none;
+  border-color: var(--apple-accent);
+  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.1);
+}
+
+/* === 开关切换 === */
+.apple-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 40px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.apple-toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 40px;
+  height: 22px;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+}
+
+.apple-toggle-slider {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--apple-border);
+  transition: 0.2s;
+  border-radius: 22px;
+}
+
+body.theme-dark .apple-toggle-slider,
+.theme-dark .apple-toggle-slider {
+  background-color: #2e2e2e !important;
+  border: 1px solid #555 !important;
+}
+
+body.theme-dark .apple-toggle-input:checked+.apple-toggle-slider,
+.theme-dark .apple-toggle-input:checked+.apple-toggle-slider {
+  background-color: var(--apple-accent) !important;
+  border-color: var(--apple-accent) !important;
+}
+
+.apple-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.apple-toggle-input:checked+.apple-toggle-slider {
+  background-color: var(--apple-accent) !important;
+}
+
+.apple-toggle-input:checked+.apple-toggle-slider:before {
+  transform: translateX(18px);
+}
+
+/* === 操作按钮区 === */
+.apple-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--apple-spacing-md);
+  padding-top: var(--apple-spacing-md);
+  border-top: 1px dashed var(--apple-border);
+}
+
+/* 全宽按钮：同步、复制到公众号 */
+.apple-actions > .apple-btn-secondary:first-child,
+.apple-actions > .apple-btn-primary {
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+/* 知乎 + 掘金 各占半行 */
+.apple-actions > .apple-btn-secondary:not(:first-child) {
+  flex: 1 1 calc(50% - 4px);
+  min-width: 0;
+}
+
+/* Unified Button Style */
+.apple-btn-primary,
+.apple-btn-secondary {
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--apple-radius-sm);
+  background: var(--apple-accent);
+  /* Default blue */
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.apple-btn-primary:hover,
+.apple-btn-secondary:hover {
+  opacity: 0.9;
+}
+
+/* Full Width Variant */
+.apple-btn-full {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  background: var(--apple-accent);
+  /* Blue */
+}
+
+/* ========================================
+   预览区域
+   ======================================== */
+.apple-converter-preview {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--apple-spacing-lg);
+  background: var(--apple-background);
+  /* 默认跟随主题 */
+  border-radius: var(--apple-radius-md);
+  margin: var(--apple-spacing-md);
+}
+
+.apple-converter-preview.apple-has-content {
+  background: #ffffff;
+  /* 仅在有内容时强制浅色背景 */
+  color: #1d1d1f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   占位符
+   ======================================== */
+.apple-placeholder-note {
+  font-size: 12px !important;
+  color: var(--apple-tertiary);
+  margin-top: 24px !important;
+  opacity: 0.8;
+}
+
+.apple-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: var(--apple-secondary);
+  background: var(--apple-background);
+  /* 使用变量以便适配深色模式 */
+}
+
+.apple-placeholder-icon {
+  font-size: 48px;
+  margin-bottom: var(--apple-spacing-md);
+}
+
+.apple-placeholder h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--apple-primary);
+  margin: 0 0 var(--apple-spacing-sm) 0;
+}
+
+.apple-placeholder p {
+  font-size: 14px;
+  color: var(--apple-secondary);
+  margin: 0 0 var(--apple-spacing-lg) 0;
+}
+
+.apple-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  padding: var(--apple-spacing-md);
+  background: var(--apple-surface);
+  border-radius: var(--apple-radius-md);
+  font-size: 13px;
+  color: var(--apple-primary);
+  /* 确保文字颜色适配 */
+}
+
+/* ========================================
+   响应式设计
+   ======================================== */
+@media (max-width: 400px) {
+  .apple-btn-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .apple-actions > .apple-btn-secondary:not(:first-child) {
+    flex: 0 0 100%;
+  }
+}
+
+/* ========================================
+   设置页面区块标题样式
+   ======================================== */
+
+/* 统一使用 Obsidian 界面字体 */
+.vertical-tab-content h2,
+.vertical-tab-content h3,
+.vertical-tab-content h4,
+.vertical-tab-content p,
+.vertical-tab-content .setting-item {
+  font-family: var(--font-interface);
+}
+
+/* 主标题 */
+.vertical-tab-content h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-normal);
+  margin: 0 0 4px 0;
+  padding: 0;
+}
+
+/* 区块标题 h3 */
+.vertical-tab-content h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-normal);
+  margin: 24px 0 8px 0;
+  padding: 16px 0 0 0;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+/* 首个 h3 不需要上边框 */
+.vertical-tab-content h3:first-of-type {
+  border-top: none;
+  margin-top: 16px;
+  padding-top: 0;
+}
+
+/* 子标题 h4 */
+.vertical-tab-content h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-normal);
+  margin: 16px 0 8px 0;
+  padding: 0;
+}
+
+
+/* ========================================
+   多账号管理样式
+
+   ======================================== */
+.wechat-account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.wechat-account-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.wechat-account-card:hover {
+  border-color: var(--interactive-accent);
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.08);
+}
+
+.wechat-account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wechat-account-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wechat-account-name {
+  font-weight: 600;
+  color: var(--text-normal);
+  font-size: 14px;
+}
+
+.wechat-account-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  background: var(--interactive-accent);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.wechat-account-appid {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-monospace);
+}
+
+.wechat-account-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.wechat-btn-small {
+  padding: 4px 10px;
+  font-size: 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.wechat-btn-small:hover {
+  border-color: var(--interactive-accent);
+  color: var(--interactive-accent);
+}
+
+.wechat-btn-small:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wechat-btn-test {
+  color: var(--text-success);
+  border-color: var(--text-success);
+}
+
+.wechat-btn-test:hover {
+  background: rgba(52, 199, 89, 0.1);
+}
+
+.wechat-btn-danger {
+  color: var(--text-error);
+  border-color: var(--text-error);
+}
+
+.wechat-btn-danger:hover {
+  background: rgba(255, 59, 48, 0.1);
+}
+
+.wechat-add-account-container {
+  margin: 16px 0;
+}
+
+.wechat-btn-add {
+  width: 100%;
+  padding: 10px;
+  border: 2px dashed var(--background-modifier-border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.wechat-btn-add:hover {
+  border-color: var(--interactive-accent);
+  color: var(--interactive-accent);
+  background: rgba(0, 113, 227, 0.05);
+}
+
+/* 模态框表单样式 */
+.wechat-form-group {
+  margin-bottom: 16px;
+}
+
+.wechat-form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-normal);
+  margin-bottom: 6px;
+}
+
+.wechat-form-group input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  font-size: 14px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  transition: border-color 0.15s ease;
+}
+
+.wechat-form-group input:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.1);
+}
+
+.wechat-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+/* Modal buttons are styled at the end of the file (line 984+) */
+
+/* Side Panel 账号选择器 */
+.wechat-account-selector {
+  margin-bottom: 12px;
+}
+
+.wechat-account-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-size: 13px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236e6e73' d='M2.5 4.5L6 8l3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.theme-dark .wechat-account-select {
+  background-color: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+  color: var(--text-normal);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b3b3b3' d='M2.5 4.5L6 8l3.5-3.5'/%3E%3C/svg%3E");
+}
+
+.wechat-account-select:hover {
+  border-color: var(--interactive-accent);
+}
+
+.wechat-account-select:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+  box-shadow: 0 0 0 2px rgba(var(--interactive-accent-rgb), 0.15);
+}
+
+/* ========================================
+   同步选项区
+   ======================================== */
+.apple-sync-options {
+  padding: var(--apple-spacing-md);
+  border-top: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+}
+
+.apple-sync-options .apple-setting-section {
+  margin-bottom: 12px;
+}
+
+.apple-sync-options .apple-setting-section:last-child {
+  margin-bottom: 0;
+}
+
+.apple-sync-options .apple-setting-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+/* ========================================
+   同步 Modal 样式
+   ======================================== */
+.wechat-sync-modal {
+  min-width: 320px;
+}
+
+.wechat-modal-section {
+  margin-bottom: 16px;
+}
+
+.wechat-modal-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-normal);
+  margin-bottom: 8px;
+}
+
+.wechat-modal-cover-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wechat-modal-cover-preview {
+  width: 160px;
+  height: 100px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-secondary);
+}
+
+.wechat-modal-cover-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.wechat-modal-no-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--text-muted);
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.02);
+  text-align: center;
+  user-select: none;
+}
+
+.wechat-modal-cover-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.wechat-modal-cover-btns button {
+  padding: 4px 12px;
+  font-size: 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.wechat-modal-cover-btns button:hover {
+  border-color: var(--interactive-accent);
+}
+
+/* ========================================
+   Obsidian-Native 极简按钮样式
+   ======================================== */
+
+/* 账号卡片操作按钮 - 极简文字链接风格 */
+.wechat-account-actions button {
+  padding: 4px 8px;
+  font-size: 13px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  font-weight: 400;
+}
+
+/* 普通按钮 (编辑、设为默认、测试) */
+.wechat-account-actions button:not(.wechat-btn-danger) {
+  color: var(--text-muted);
+}
+
+.wechat-account-actions button:not(.wechat-btn-danger):hover {
+  color: var(--interactive-accent);
+}
+
+/* 删除按钮 - 红色文字 */
+.wechat-account-actions .wechat-btn-danger {
+  color: var(--text-error);
+}
+
+.wechat-account-actions .wechat-btn-danger:hover {
+  color: #ff3b30;
+}
+
+/* Modal 按钮区 */
+.wechat-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.wechat-modal-buttons button {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+/* 取消/测试连接 - 文字链接风格 */
+.wechat-modal-buttons button:not(.mod-cta) {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+}
+
+.wechat-modal-buttons button:not(.mod-cta):hover {
+  color: var(--interactive-accent);
+}
+
+/* CTA 按钮 (保存、开始同步) - 使用 Obsidian 主题色 */
+.wechat-modal-buttons .mod-cta {
+  background: var(--interactive-accent);
+  border: none;
+  color: var(--text-on-accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.15s ease;
+}
+
+.wechat-modal-buttons .mod-cta:hover {
+  background: var(--interactive-accent) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* 测试连接按钮 - 绿色文字 */
+.wechat-modal-buttons .wechat-btn-test {
+  color: var(--text-success);
+}
+
+.wechat-modal-buttons .wechat-btn-test:hover {
+  color: #2ecc71;
+}
+
+/* 添加账号按钮 - 虚线边框 */
+.wechat-btn-add {
+  width: 100%;
+  padding: 10px;
+  border: 1px dashed var(--background-modifier-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.wechat-btn-add:hover {
+  border-color: var(--interactive-accent);
+  color: var(--interactive-accent);
+}
+
+/* ========================================
+   内容制作进度条
+   ======================================== */
+.apple-pipeline-bar {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  margin-bottom: 4px;
+}
+
+.apple-pipeline-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.apple-pipeline-done {
+  background: rgba(52, 199, 89, 0.12);
+  color: #34c759;
+}
+
+.apple-pipeline-wip {
+  background: rgba(255, 149, 0, 0.12);
+  color: #ff9500;
+}
+
+.apple-pipeline-todo {
+  background: rgba(142, 142, 147, 0.08);
+  color: #8e8e93;
+}
+
+.theme-dark .apple-pipeline-done {
+  background: rgba(52, 199, 89, 0.15);
+  color: #4cd964;
+}
+
+.theme-dark .apple-pipeline-wip {
+  background: rgba(255, 149, 0, 0.15);
+  color: #ffb340;
+}
+
+.theme-dark .apple-pipeline-todo {
+  background: rgba(142, 142, 147, 0.1);
+  color: #636366;
+}

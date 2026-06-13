@@ -72,11 +72,12 @@ wechat-writing/
 
 ### 第四步：安装排版插件
 
-推荐使用 [obsidian-wechat-converter](https://github.com/DavidLam-oss/obsidian-wechat-converter)：
+本仓库已包含 obsidian-wechat-converter 插件的分发文件（`plugin/` 目录）。
 
-1. 在 Obsidian 社区插件市场搜索 "Wechat Converter" 安装
-2. 或手动下载 release 放入 `.obsidian/plugins/wechat-converter/`
-3. 在插件设置中填入你的公众号 AppID 和 AppSecret
+1. 将 `plugin/` 文件夹整体复制到你的 Obsidian Vault 的 `.obsidian/plugins/wechat-converter/` 目录下
+2. 在 Obsidian 设置 → 社区插件 中启用 "Wechat Converter"
+3. 在插件设置中填入你的公众号 AppID 和 AppSecret（在公众号后台 → 开发 → 基本配置中获取）
+4. 原项目地址：[obsidian-wechat-converter](https://github.com/DavidLam-oss/obsidian-wechat-converter)
 
 ### 第五步：跑通一次
 
